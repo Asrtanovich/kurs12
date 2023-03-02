@@ -17,18 +17,21 @@ class HomeView extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          const Text(
-            'Turat Alybaev',
-            style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.w400,
-                color: Color(0xffF7F9F9),
-                fontFamily: 'Pacifico'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            const Text(
+              'Turat Alybaev',
+              style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffF7F9F9),
+                  fontFamily: 'Pacifico'),
+            ),
+          ],
+        ),
       ),
     );
   }
