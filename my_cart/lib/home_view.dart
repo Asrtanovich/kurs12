@@ -30,6 +30,14 @@ class HomeView extends StatelessWidget {
                   color: Color(0xffF7F9F9),
                   fontFamily: 'Pacifico'),
             ),
+            const Text(
+              'Flutter Developer',
+              style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffF7F9F9),
+                  fontFamily: ' Roboto'),
+            ),
           ],
         ),
       ),

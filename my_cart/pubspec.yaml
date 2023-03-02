@@ -79,6 +79,21 @@ flutter:
     - family: Pacifico
       fonts:
         - asset: assets/fonts/Pacifico-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Poboto/Roboto-Black.ttf
+        - asset: assets/fonts/Poboto/Roboto-Blackltalic.ttf
+        - asset: assets/fonts/Poboto/Roboto-Bold.ttf
+        - asset: assets/fonts/Poboto/Roboto-Boldltalic.ttf
+        - asset: assets/fonts/Poboto/Roboto-ltalic.ttf
+        - asset: assets/fonts/Poboto/Roboto-Light.ttf
+        - asset: assets/fonts/Poboto/Roboto-Lightltalic.ttf
+        - asset: assets/fonts/Poboto/Roboto-Medium.ttf
+        - asset: assets/fonts/Poboto/Roboto-Mediumltalic.ttf
+        - asset: assets/fonts/Poboto/Roboto-Regular.ttf
+        - asset: assets/fonts/Poboto/Roboto-Thin.ttf
+        - asset: assets/fonts/Poboto/Roboto-Thinltalic.ttf
+        - asset: assets/fonts/Poboto/Roboto-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
