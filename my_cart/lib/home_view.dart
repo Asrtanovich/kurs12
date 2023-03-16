@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             const Text(
-              'Turat Alybaev',
+              'Ибраев Исмаил',
               style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.w400,
@@ -31,12 +31,67 @@ class HomeView extends StatelessWidget {
                   fontFamily: 'Pacifico'),
             ),
             const Text(
-              'Flutter Developer',
+              'Концултант по юридическим делам',
               style: TextStyle(
-                  fontSize: 48,
+                  fontSize: 15,
                   fontWeight: FontWeight.w400,
                   color: Color(0xffF7F9F9),
-                  fontFamily: ' Roboto'),
+                  fontFamily: 'Roboto'),
+            ),
+            const Divider(
+              color: Color(0xffffffff),
+              thickness: 2,
+              indent: 60,
+              endIndent: 70,
+            ),
+            Container(
+              height: 55,
+              color: Colors.white,
+              child: Row(
+                children: const [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Icon(
+                    Icons.call,
+                    size: 30,
+                    color: Color(0xff056C5C),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    '+996706566006',
+                    style: TextStyle(fontSize: 22, color: Color(0xff056C5C)),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 55,
+              color: Colors.white,
+              child: Row(
+                children: const [
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Icon(
+                    Icons.mail,
+                    size: 30,
+                    color: Color(0xff056C5C),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'ibraev.ismail999@gmail.com',
+                    style: TextStyle(fontSize: 22, color: Color(0xff056C5C)),
+                  )
+                ],
+              ),
             ),
           ],
         ),
