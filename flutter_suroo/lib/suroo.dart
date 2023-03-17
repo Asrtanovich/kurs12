@@ -1,27 +1,22 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class Suroo extends StatefulWidget {
-  const Suroo({super.key});
+  Suroo({super.key});
 
   @override
   State<Suroo> createState() => _SurooState();
 }
 
 class _SurooState extends State<Suroo> {
-  List<Icon> iconkalar = [
-    Icon(
-      Icons.check,
-      size: 50,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      size: 50,
-      color: Colors.red,
-    ),
-  ];
+  List<Icon> iconkalar = [];
+
+  int esepte = 0;
+
   @override
   Widget build(BuildContext context) {
+    log('ekran kuruldu  ======>>> $esepte');
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -40,7 +35,16 @@ class _SurooState extends State<Suroo> {
               height: 20,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                setState(() {});
+                iconkalar.add(
+                  Icon(
+                    Icons.check,
+                    color: Colors.green,
+                  ),
+                );
+                log('$iconkalar');
+              },
               child: Container(
                 color: Colors.green,
                 child: Padding(
@@ -63,7 +67,16 @@ class _SurooState extends State<Suroo> {
               height: 20,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                setState(() {});
+                iconkalar.add(
+                  Icon(
+                    Icons.close,
+                    color: Colors.red,
+                  ),
+                );
+                log('$iconkalar');
+              },
               child: Container(
                 color: Colors.red,
                 child: Padding(
