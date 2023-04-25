@@ -32,13 +32,8 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   setState(() {});
 
-                  /// 1,2,3,4,5,6
-                  /// 0,1,2,3,4,5
-                  /// 0+1=1
-                  /// 1+1=2
                   final random = Random().nextInt(6) + 1;
                   solDice = random;
-                  // math.log('Sol jak basilip atat');
                 },
                 child: Image.asset('assets/images/dice$solDice.png'),
               ),
@@ -72,9 +67,6 @@ class _HomePageState extends State<HomePage> {
                 child: Image.asset('assets/images/dice$onDice.png'),
               ),
             ),
-            // Expanded(
-            //   child: Icon(Icons.person),
-            // ),
           ],
         ),
       ),
