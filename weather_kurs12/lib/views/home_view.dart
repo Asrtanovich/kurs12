@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
   //DELETE-DELETE
   Future<void> getWeather() async {
     try {
-      final clinet = Client();
+      final clinet = http.Client();
 
       final url =
           'https://api.openweathermap.org/data/2.5/weather?lat=37.421998333333335&lon=&appid=${ApiKeys.myApiKey}';
