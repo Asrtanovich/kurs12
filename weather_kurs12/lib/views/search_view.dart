@@ -58,6 +58,9 @@ class SearchView extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
+                  if (_controller.text.isNotEmpty) {
+                    Navigator.pop(context, text);
+                  }
                   FocusManager.instance.primaryFocus?.unfocus();
                 },
                 child: Text(

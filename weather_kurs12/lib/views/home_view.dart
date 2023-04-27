@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
@@ -15,17 +16,25 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  String cityName = '';
+  bool isLoding = false;
   @override
   void initState() {
+    // getSearchedCityName();
     showWeatherByLocation();
     super.initState();
   }
 
   Future<void> showWeatherByLocation() async {
-    await getWeather();
+    setState(() {
+      isLoding = true;
+    });
     final position = await _getPosition();
-    log('Latitude ==> ${position.latitude}');
-    log('Longitude ==> ${position.longitude}');
+    await getWeather(position);
+    setState(() {
+      isLoding = false;
+    });
+    // await getSearchedCityName();
   }
 
   //CRUD
@@ -33,18 +42,37 @@ class _HomeViewState extends State<HomeView> {
   //READ-GET
   //UPDATE-PUT
   //DELETE-DELETE
-  Future<void> getWeather() async {
+  Future<void> getWeather(Position position) async {
     try {
       final clinet = http.Client();
 
       final url =
-          'https://api.openweathermap.org/data/2.5/weather?lat=37.421998333333335&lon=&appid=${ApiKeys.myApiKey}';
+          'https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${ApiKeys.myApiKey}';
       Uri uri = Uri.parse(url);
       final joop = await clinet.get(uri);
-      log('response ==> ${joop.body}}');
+      final jsonData = jsonDecode(joop.body);
+      cityName = jsonData['name'];
+      setState(() {});
+      log('response==> ${joop.body}');
+      log('response json ==> ${jsonData}');
     } catch (e) {
       throw Exception(e);
     }
+  }
+
+  Future<void> getSearchedCityName(String tybeCityName) async {
+    final clinet = http.Client();
+    try {
+      Uri uri = Uri.parse(
+          'https://api.openweathermap.org/data/2.5/weather?q=$tybeCityName&appid=${ApiKeys.myApiKey}');
+      final response = await clinet.get(uri);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final data = jsonDecode(response.body);
+        log('data ===>${data}');
+        cityName = data['name'];
+        setState(() {});
+      }
+    } catch (e) {}
   }
 
   Future<Position> _getPosition() async {
@@ -91,19 +119,29 @@ class _HomeViewState extends State<HomeView> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          leading: Icon(
-            Icons.near_me,
-            size: 50,
-          ),
+          leading: isLoding == true
+              ? CircularProgressIndicator(
+                  color: Colors.red,
+                )
+              : InkWell(
+                  onTap: () async {
+                    await showWeatherByLocation();
+                  },
+                  child: Icon(
+                    Icons.near_me,
+                    size: 50,
+                  ),
+                ),
           actions: [
             InkWell(
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                final String typedCityName = await Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => SearchView(),
                   ),
                 );
+                await getSearchedCityName(typedCityName);
               },
               child: Icon(
                 Icons.location_city,
@@ -146,11 +184,11 @@ class _HomeViewState extends State<HomeView> {
               ),
               Positioned(
                 top: 650,
-                left: 250,
+                left: 20,
                 child: Text(
-                  'Osh',
+                  cityName,
                   style: TextStyle(
-                    fontSize: 70,
+                    fontSize: 45,
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
