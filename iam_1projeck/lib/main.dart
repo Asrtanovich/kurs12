@@ -1,25 +1,20 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
-import 'package:weather_kurs12/views/home_view.dart';
-
 void main() {
-  runApp(WeatherApp());
+  runApp(MyApp());
 }
 
-class WeatherApp extends StatelessWidget {
-  const WeatherApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Splash Screen',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
+      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
     );
   }
 }
@@ -34,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 7),
+        Duration(seconds: 3),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => SecondScreen())));
   }
@@ -42,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Color.fromARGB(255, 185, 169, 169),
+        color: Colors.white,
         child: FlutterLogo(size: MediaQuery.of(context).size.height));
   }
 }
@@ -54,7 +49,7 @@ class SecondScreen extends StatelessWidget {
       appBar: AppBar(title: Text("GeeksForGeeks")),
       body: Center(
           child: Text(
-        "Home page",
+        "WhetherApp",
         textScaleFactor: 2,
       )),
     );

@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather_kurs12/constans/api_keys0/api_keys.dart';
+import 'package:weather_kurs12/datetime/datetime.dart';
 import 'package:weather_kurs12/views/search_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -16,6 +17,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final dateTime = DateTime.now();
+
   String cityName = '';
   bool isLoding = false;
   @override
@@ -119,19 +122,15 @@ class _HomeViewState extends State<HomeView> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          leading: isLoding == true
-              ? CircularProgressIndicator(
-                  color: Colors.red,
-                )
-              : InkWell(
-                  onTap: () async {
-                    await showWeatherByLocation();
-                  },
-                  child: Icon(
-                    Icons.near_me,
-                    size: 50,
-                  ),
-                ),
+          leading: InkWell(
+            onTap: () async {
+              await showWeatherByLocation();
+            },
+            child: Icon(
+              Icons.refresh_outlined,
+              size: 50,
+            ),
+          ),
           actions: [
             InkWell(
               onTap: () async {
@@ -144,7 +143,7 @@ class _HomeViewState extends State<HomeView> {
                 await getSearchedCityName(typedCityName);
               },
               child: Icon(
-                Icons.location_city,
+                Icons.search,
                 size: 50,
               ),
             ),
@@ -158,57 +157,92 @@ class _HomeViewState extends State<HomeView> {
               fit: BoxFit.cover,
             ),
           ),
-          child: Stack(
-            children: [
-              Positioned(
-                top: 100,
-                left: 100,
-                child: Text(
-                  '🌞',
-                  style: TextStyle(
-                    fontSize: 60,
-                    color: Colors.white,
+          child: isLoding == true
+              ? Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                    backgroundColor: Colors.white,
                   ),
+                )
+              : Stack(
+                  children: [
+                    Positioned(
+                      top: 9,
+                      left: 45,
+                      child: Text(
+                        '📍',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 9,
+                      left: 300,
+                      child: Text(
+                        '🏡',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 210,
+                      left: 100,
+                      right: 100,
+                      child: Text(
+                        '$formattedDate',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Positioned(
+                      top: 150,
+                      left: 20,
+                      right: 20,
+                      child: Text(
+                        '🌞 11°',
+                        style: TextStyle(
+                          fontSize: 50,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Positioned(
+                      top: 70,
+                      left: 30,
+                      right: 30,
+                      child: Text(
+                        cityName,
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Positioned(
+                      top: 540,
+                      left: 25,
+                      right: 25,
+                      child: Text(
+                        'Bad weather🧣 Dress Warmly🧤',
+                        style: TextStyle(
+                          fontSize: 45,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Positioned(
-                top: 140,
-                left: 30,
-                child: Text(
-                  '11°',
-                  style: TextStyle(
-                    fontSize: 50,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 650,
-                left: 20,
-                child: Text(
-                  cityName,
-                  style: TextStyle(
-                    fontSize: 45,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 0, 0, 0),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 500,
-                left: 20,
-                child: Text(
-                  '''Bad weather🧣
-Dress Warmly🧤
-                  ''',
-                  style: TextStyle(
-                    fontSize: 50,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );
