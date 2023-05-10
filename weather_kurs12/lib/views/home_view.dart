@@ -20,6 +20,7 @@ class _HomeViewState extends State<HomeView> {
   final dateTime = DateTime.now();
 
   String cityName = '';
+  dynamic tempreture = '';
   bool isLoding = false;
   @override
   void initState() {
@@ -50,11 +51,13 @@ class _HomeViewState extends State<HomeView> {
       final clinet = http.Client();
 
       final url =
-          'https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${ApiKeys.myApiKey}';
+          'https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${position.latitude}&lon=${position.longitude}&appid=${ApiKeys.myApiKey}';
       Uri uri = Uri.parse(url);
       final joop = await clinet.get(uri);
       final jsonData = jsonDecode(joop.body);
       cityName = jsonData['name'];
+      tempreture = jsonData['main']['temp'];
+      checkDouble(tempreture);
       setState(() {});
       log('response==> ${joop.body}');
       log('response json ==> ${jsonData}');
@@ -76,6 +79,14 @@ class _HomeViewState extends State<HomeView> {
         setState(() {});
       }
     } catch (e) {}
+  }
+
+  double checkDouble(dynamic value) {
+    if (value is String) {
+      return double.parse(value);
+    } else {
+      return value;
+    }
   }
 
   Future<Position> _getPosition() async {
@@ -142,9 +153,12 @@ class _HomeViewState extends State<HomeView> {
                 );
                 await getSearchedCityName(typedCityName);
               },
-              child: Icon(
-                Icons.search,
-                size: 50,
+              child: Positioned(
+                top: 60,
+                child: Icon(
+                  Icons.search,
+                  size: 50,
+                ),
               ),
             ),
           ],
@@ -189,7 +203,7 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                     Positioned(
-                      top: 210,
+                      top: 115,
                       left: 100,
                       right: 100,
                       child: Text(
@@ -206,7 +220,7 @@ class _HomeViewState extends State<HomeView> {
                       left: 20,
                       right: 20,
                       child: Text(
-                        '🌞 11°',
+                        '🌞 $tempreture°C',
                         style: TextStyle(
                           fontSize: 50,
                           color: Colors.white,

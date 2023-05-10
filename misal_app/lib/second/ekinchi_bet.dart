@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class EkinchiB extends StatelessWidget {
-  EkinchiB({@required this.sanKelsin});
+// ignore: must_be_immutable
+class SecondPage extends StatelessWidget {
+  SecondPage({@required this.sanKelsin});
   int sanKelsin;
 
   @override

@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 7),
+        Duration(seconds: 10),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => SecondScreen())));
   }
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Color.fromARGB(255, 185, 169, 169),
+        color: Color.fromARGB(255, 255, 9, 9),
         child: FlutterLogo(size: MediaQuery.of(context).size.height));
   }
 }
@@ -51,12 +51,13 @@ class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("GeeksForGeeks")),
+      appBar: AppBar(title: Text("Weather")),
       body: Center(
-          child: Text(
-        "Home page",
-        textScaleFactor: 2,
-      )),
+        child: Text(
+          "Home page",
+          textScaleFactor: 5,
+        ),
+      ),
     );
   }
 }
