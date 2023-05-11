@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-class FirstController extends GetxController{
-  int san =0;
-      setState(() {});
+class FirstController extends GetxController {
+  int san = 0;
+  void koshuu() {
     san = san + 1; // uzun jolu
     // san++; kyska jolu
   }
@@ -11,7 +11,6 @@ class FirstController extends GetxController{
     if (san == 0) {
       san = 0;
     } else {
-      setState(() {});
       san = san - 1;
     }
   }
