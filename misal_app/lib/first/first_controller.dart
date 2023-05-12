@@ -1,17 +1,18 @@
 import 'package:get/get.dart';
 
 class FirstController extends GetxController {
-  int san = 0;
+  Rx<int> san = 0.obs;
+  RxInt count = 0.obs;
   void koshuu() {
-    san = san + 1; // uzun jolu
+    san.value = san.value + 1; // uzun jolu
     // san++; kyska jolu
   }
 
   void kemituu() {
     if (san == 0) {
-      san = 0;
+      san.value = 0;
     } else {
-      san = san - 1;
+      san.value = san.value - 1;
     }
   }
 }

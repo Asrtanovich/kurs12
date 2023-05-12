@@ -1,15 +1,19 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:misal_app/first/first_controller.dart';
 import 'package:misal_app/second/second_page.dart';
 
 class FirstPage extends StatelessWidget {
-  const FirstPage({Key key}) : super(key: key);
+  FirstPage({Key key}) : super(key: key);
+  FirstController _firstController =
+      Get.put<FirstController>(FirstController());
 
   @override
   Widget build(BuildContext context) {
     int san = 0;
-
+    log('Build ====>${_firstController.count.value}');
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -32,7 +36,7 @@ class FirstPage extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.07,
               child: Center(
                 child: Text(
-                  "San: $san",
+                  "San:${_firstController.san.value}",
                   style: TextStyle(
                     color: Color.fromARGB(221, 16, 4, 4),
                     fontSize: 20,
