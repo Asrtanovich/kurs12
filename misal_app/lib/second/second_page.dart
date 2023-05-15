@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:misal_app/first/first_controller.dart';
 
 // ignore: must_be_immutable
 class SecondPage extends StatelessWidget {
-  SecondPage({@required this.sanKelsin});
-  int sanKelsin;
+  SecondPage();
+  FirstController _firstController =
+      Get.put<FirstController>(FirstController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class SecondPage extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.07,
             child: Center(
               child: Text(
-                "San:$sanKelsin",
+                "San:${_firstController.san.value} ",
                 style: TextStyle(
                   color: Color.fromARGB(221, 16, 4, 4),
                   fontSize: 20,

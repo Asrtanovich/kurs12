@@ -13,6 +13,7 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int san = 0;
+    RxInt count = 0.obs;
     log('Build ====>${_firstController.count.value}');
     return Scaffold(
       appBar: AppBar(
@@ -35,14 +36,14 @@ class FirstPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.4,
               height: MediaQuery.of(context).size.height * 0.07,
               child: Center(
-                child: Text(
-                  "San:${_firstController.san.value}",
-                  style: TextStyle(
-                    color: Color.fromARGB(221, 16, 4, 4),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Obx(() => Text(
+                      "San:${_firstController.count.value}",
+                      style: TextStyle(
+                        color: Color.fromARGB(221, 16, 4, 4),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
               ),
             ),
             SizedBox(
@@ -57,7 +58,9 @@ class FirstPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(90.0)),
                     minimumSize: Size(40, 50), //////// HERE
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _firstController.kemituu;
+                  },
                   child: Icon(
                     Icons.remove,
                     color: Color.fromARGB(255, 233, 225, 225),
@@ -72,7 +75,9 @@ class FirstPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(90.0)),
                     minimumSize: Size(40, 50), //////// HERE
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _firstController.koshuu;
+                  },
                   child: Icon(
                     Icons.add,
                     color: Colors.white,
@@ -88,9 +93,7 @@ class FirstPage extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SecondPage(
-                sanKelsin: san,
-              ),
+              builder: (context) => SecondPage(),
             ),
           );
         },
