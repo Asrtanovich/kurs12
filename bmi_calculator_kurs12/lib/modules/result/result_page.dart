@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:bmi_calculator_kurs12/constants/colors/app_colors.dart';
-import 'package:bmi_calculator_kurs12/data/bmi_data.dart';
-import 'package:bmi_calculator_kurs12/widgets/button_widget.dart';
+import 'package:bmi_calculator_kurs12/data/local/bmi_data.dart';
+import 'package:bmi_calculator_kurs12/component/buttons/button_widget.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
