@@ -1,4 +1,4 @@
-import 'package:counter_app/home_view.dart';
+import 'package:counter_app/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +12,6 @@ class CounterAp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      debugShowMaterialGrid: false,
       home: HomeView(),
     );
   }
