@@ -15,6 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeState(san: state.san! - 1));
   }
 
+
   // void ozgort(bool ozgoruunuBer) {
   //   if (ozgoruunuBer == true) {
   //     san++;
