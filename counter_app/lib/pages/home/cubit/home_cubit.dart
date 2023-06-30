@@ -1,23 +1,25 @@
-// part 'home_state.dartt';
-class HomeState extends Cubit<HomeState>{
-  HomeCubit(): super (HomeState());
-    void koshuu() {
-    setState(() {
-      san = san + 1;
-      // text++;
-    });
+import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
+
+part 'home_state.dart';
+
+class HomeCubit extends Cubit<HomeState> {
+  HomeCubit() : super(HomeState());
+
+  void koshuu() {
+    emit(HomeState(san: state.san! + 1));
+    // text++;
   }
-    void kemituu() {
-    setState(() {});
-    san--;
+
+  void kemituu() {
+    emit(HomeState(san: state.san! - 1));
   }
-  
-  void ozgort(bool ozgoruunuBer) {
-    if (ozgoruunuBer == true) {
-      setState(() {});
-      san++;
-    } else {
-      san--;
-    }
-  }
+
+  // void ozgort(bool ozgoruunuBer) {
+  //   if (ozgoruunuBer == true) {
+  //     san++;
+  //   } else {
+  //     san--;
+  //   }
+  // }
 }
